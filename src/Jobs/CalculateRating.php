@@ -1,0 +1,20 @@
+<?php
+
+namespace Ysn\SuperCore\Jobs;
+
+use Ysn\SuperCore\Jobs\BaseJob;
+
+class CalculateRating extends BaseJob
+{
+    public $model;
+
+    public function __construct($model)
+    {
+        $this->model = $model->withoutRelations();
+    }
+
+    public function handle()
+    {
+        $this->model->calculateRating();
+    }
+}

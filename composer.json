@@ -1,0 +1,63 @@
+{
+    "version": "0.0.1",
+    "name": "yassine-dabbous/core",
+    "description": "core logic for qarya app",
+    "type": "library",
+    "authors": [
+        {
+            "name": "yassine-dabbous",
+            "email": "yassine.dabbous@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "laravel-notification-channels/onesignal": "^2.5",
+        "spatie/laravel-medialibrary": "^11.4",
+        "spatie/opening-hours": "^3.0",
+
+        "geo-io/wkb-parser": "^1.0",
+        
+        
+        "yassinedabbous/laravel-dynamic-query": "dev-main",
+        "yassinedabbous/laravel-file-cast": "dev-main",
+
+
+
+        "tenancy/framework": "^2.2",
+        "tenancy/affects-configs": "^2.2",
+        "tenancy/identification-driver-console": "^2.2",
+        "tenancy/identification-driver-http": "^2.2",
+        "tenancy/identification-driver-queue": "^2.2",
+        
+        "twilio/sdk": "^8.0",
+        "vonage/client": "^4.0"
+    },
+    "autoload": {
+        "files": [
+            "src/Helpers/identification.php",
+            "src/Helpers/paths.php",
+            "src/Helpers/texts.php"
+        ],
+        "psr-4": {
+            "Ysn\\SuperCore\\": "src/",
+            "Ysn\\SuperCore\\Database\\Factories\\": "database/factories",
+            "Ysn\\SuperCore\\Database\\Seeders\\": "database/seeders"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ysn\\SuperCore\\CoreServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true
+        }
+    }
+}
