@@ -1,12 +1,12 @@
 <?php
-namespace Ysn\SuperCore\Http\Actions\Basics;
+namespace Yaseen\Toolset\Http\Actions\Basics;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
-use Ysn\SuperCore\Http\Actions\BaseCollectionAction; 
+use Yaseen\Toolset\Http\Actions\BaseCollectionAction; 
 
 class DeleteAction extends BaseCollectionAction
 {

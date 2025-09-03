@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ysn\SuperCore\Casts\Spatial;
+namespace Yaseen\Toolset\Casts\Spatial;
 
 use Exception;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;

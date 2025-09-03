@@ -1,6 +1,6 @@
 <?php
 
-namespace Ysn\SuperCore\Listeners;
+namespace Yaseen\Toolset\Listeners;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;

@@ -1,5 +1,5 @@
 <?php
-namespace Ysn\SuperCore\Notifications;
+namespace Yaseen\Toolset\Notifications;
 use Illuminate\Notifications\Notification;
 use NotificationChannels\OneSignal\OneSignalChannel;
 use NotificationChannels\OneSignal\OneSignalMessage;
@@ -11,7 +11,6 @@ class BaseNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    //public $afterCommit = true;
     public function __construct()
     {
         //$this->afterCommit = true;
@@ -29,12 +28,12 @@ class BaseNotification extends Notification implements ShouldQueue
         ];
     }
 
-    public function toOneSignal($notifiable)
-    {
-        return OneSignalMessage::create()
-            ->setSubject(__(static::class))
-            ->setBody(__('Click here to see details.'));
-    }
+    // public function toOneSignal($notifiable)
+    // {
+    //     return OneSignalMessage::create()
+    //         ->setSubject(__(static::class))
+    //         ->setBody(__('Click here to see details.'));
+    // }
 
     /*public function toMail($notifiable)
     {

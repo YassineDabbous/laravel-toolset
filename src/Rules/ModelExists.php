@@ -1,6 +1,6 @@
 <?php
 
-namespace Ysn\SuperCore\Rules;
+namespace Yaseen\Toolset\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\DB;

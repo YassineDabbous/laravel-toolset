@@ -1,10 +1,10 @@
 <?php
-namespace Ysn\SuperCore\Concerns;
+namespace Yaseen\Toolset\Concerns;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Ysn\SuperCore\Models\Scopes\TenantableScope;
-use Ysn\SuperCore\Models\TenantModel;
+use Yaseen\Toolset\Models\Scopes\TenantableScope;
+use Yaseen\Toolset\Models\TenantModel;
 
 trait Tenantable
 {

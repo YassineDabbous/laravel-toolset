@@ -1,5 +1,5 @@
 <?php
-namespace Ysn\SuperCore\Http\Actions;
+namespace Yaseen\Toolset\Http\Actions;
 
 use Illuminate\Auth\Access\Response;
 use Illuminate\Database\Eloquent\Builder;

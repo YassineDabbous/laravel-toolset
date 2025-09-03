@@ -1,6 +1,6 @@
 <?php
 
-namespace Ysn\SuperCore\Http\Middleware;
+namespace Yaseen\Toolset\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;

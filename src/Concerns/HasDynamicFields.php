@@ -1,5 +1,5 @@
 <?php
-// namespace Ysn\SuperCore\Concerns;
+// namespace Yaseen\Toolset\Concerns;
 // // use Illuminate\Contracts\Database\Eloquent\Builder; 
 // use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 // use Illuminate\Database\Eloquent\Relations\BelongsToMany;

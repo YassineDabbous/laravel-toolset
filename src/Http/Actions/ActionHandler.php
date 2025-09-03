@@ -1,14 +1,14 @@
 <?php
 
-namespace Ysn\SuperCore\Http\Actions;
+namespace Yaseen\Toolset\Http\Actions;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
-use Ysn\SuperCore\Http\Actions\BaseAction;
-use Ysn\SuperCore\Http\Actions\Basics\DeleteAction;
-use Ysn\SuperCore\Http\Responses\HasRestfulResponse;
+use Yaseen\Toolset\Http\Actions\BaseAction;
+use Yaseen\Toolset\Http\Actions\Basics\DeleteAction;
+use Yaseen\Toolset\Http\Responses\FormattedApiResponses;
 class ActionHandler {
-    use HasRestfulResponse;
+    use FormattedApiResponses;
 
     public static array $actions = [
         'delete' => DeleteAction::class,

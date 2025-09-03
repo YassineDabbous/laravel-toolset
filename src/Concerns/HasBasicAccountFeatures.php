@@ -1,5 +1,5 @@
 <?php
-namespace Ysn\SuperCore\Concerns;
+namespace Yaseen\Toolset\Concerns;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Foundation\Auth\Access\Authorizable;
@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
 use Laravel\Sanctum\HasApiTokens;
-use Ysn\SuperCore\Concerns\HasMetaColumn;
-use Ysn\SuperCore\Concerns\HasConfigColumn;
-use Ysn\SuperCore\Concerns\Tenantable;
-use Ysn\SuperCore\Types\AccountStatus;
-use Ysn\SuperCore\Types\AccountType;
-use Ysn\SuperCore\Casts\Spatial\Spatialable;
+use Yaseen\Toolset\Concerns\HasMetaColumn;
+use Yaseen\Toolset\Concerns\HasConfigColumn;
+use Yaseen\Toolset\Concerns\Tenantable;
+use Yaseen\Toolset\Types\AccountStatus;
+use Yaseen\Toolset\Types\AccountType;
+use Yaseen\Toolset\Casts\Spatial\Spatialable;
 
 trait HasBasicAccountFeatures
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Ysn\SuperCore\Casts\Spatial;
+namespace Yaseen\Toolset\Casts\Spatial;
 
 use Illuminate\Database\Eloquent\Builder;
 

@@ -1,4 +1,4 @@
-<?php namespace Ysn\SuperCore\Repositories;
+<?php namespace Yaseen\Toolset\Repositories;
 
 class BaseRepository{
 

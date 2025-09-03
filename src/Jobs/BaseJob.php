@@ -1,6 +1,6 @@
 <?php
 
-namespace Ysn\SuperCore\Jobs;
+namespace Yaseen\Toolset\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;

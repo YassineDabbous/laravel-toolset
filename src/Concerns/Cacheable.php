@@ -1,5 +1,5 @@
 <?php
-namespace Ysn\SuperCore\Concerns;
+namespace Yaseen\Toolset\Concerns;
 
 // use Rennokki\QueryCache\Traits\QueryCacheable;
 

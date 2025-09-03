@@ -1,8 +1,8 @@
 <?php
 
-namespace Ysn\SuperCore\Jobs;
+namespace Yaseen\Toolset\Jobs;
 
-use Ysn\SuperCore\Jobs\BaseJob;
+use Yaseen\Toolset\Jobs\BaseJob;
 
 class CalculateRating extends BaseJob
 {

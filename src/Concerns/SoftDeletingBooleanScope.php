@@ -1,6 +1,6 @@
 <?php
 
-namespace Ysn\SuperCore\Concerns;
+namespace Yaseen\Toolset\Concerns;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
