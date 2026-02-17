@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
 use Yaseen\Toolset\Http\Actions\ActionHandler;
 use Yaseen\Toolset\Http\Middleware\LangMiddleware;
+use Illuminate\Foundation\Configuration\Middleware; 
+use Illuminate\Contracts\Http\Kernel;
 
 class ToolsetServiceProvider extends ServiceProvider
 {
@@ -21,15 +23,20 @@ class ToolsetServiceProvider extends ServiceProvider
         
         
     }
+ 
 
 
 
-
-
-    public function boot(Router $router)
+    public function boot(Router $router, Kernel $kernel)
     {
-        
-        $router->middleware(LangMiddleware::class);
+        $kernel->pushMiddleware(LangMiddleware::class);
+        //
+        // middleware registered in bootstrap/app.php
+        //
+        // $router->middleware(LangMiddleware::class);
+        // $this->app->afterResolving(Middleware::class, function (Middleware $middleware) {
+        //     $middleware->prependToGroup('api', LangMiddleware::class);
+        // });
         
         // Model::shouldBeStrict(); // shouldBeStrict(! app()->isProduction());
         // Http::preventStrayRequests(); // Don’t let any requests go out. Good for testing

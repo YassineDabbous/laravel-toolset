@@ -9,9 +9,17 @@ class LangMiddleware
 {
     public function handle(Request $request, Closure $next){
 
-        if ($request->hasHeader('Accept-Language') && ($locale = $request->header('Accept-Language')) && in_array($locale, config('settings.available_locales', []))) {
+        if ($request->filled('__language')) {
+            app()->setLocale($request->__language);
+        }
+        if (
+            $request->hasHeader('Accept-Language')
+            && ($locale = $request->header('Accept-Language'))
+            && in_array($locale, config('settings.available_locales', ['en', 'ar']))
+        ) {
             app()->setLocale($locale);
         }
+        
         // if (Session::has('locale')) {
         //     App::setLocale(Session::get('locale'));
         // }
