@@ -27,7 +27,7 @@ trait HasStandardizedErrors
      */
     protected function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException($this->validation($validator->errors()));
+        throw new HttpResponseException($this->validation( $validator->errors() ));
     }
 
     /**

@@ -23,6 +23,8 @@ trait FormattedApiResponses
      * @param mixed|null $validation Validation errors.
      * @param int $errorCode An application-specific error code.
      * @param bool $forceJson Force an empty array to be returned as {} instead of [].
+     * @param array $headers Additional headers to include in the response.
+     * 
      * @return JsonResponse
      */
     public static function standardize(
@@ -32,10 +34,11 @@ trait FormattedApiResponses
         $error = null,
         $validation = null,
         int $errorCode = 0,
-        bool $forceJson = false
+        bool $forceJson = false,
+        array $headers = [],
     ): JsonResponse {
         return response()->json(
-            array_filter(
+            data: array_filter(
                 [
                     'code' => $errorCode,
                     'message' => $message,
@@ -45,27 +48,43 @@ trait FormattedApiResponses
                 ],
                 fn ($v) => !is_null($v)
             ),
-            $status,
-            [],
-            $forceJson ? JSON_FORCE_OBJECT : 0
+            status: $status,
+            headers: $headers,
+            options: $forceJson ? JSON_FORCE_OBJECT : 0
         );
     }
 
     /**
      * Return a successful response.
+     * @param mixed|null $data The main data payload.
+     * @param string $message A descriptive message.
+     * @param bool $forceJson Force an empty array to be returned as {} instead of [].
+     * @param int|null $cacheInSeconds Number of seconds to cache the response.
      */
-    public static function success($data = null, string $message = 'success', bool $forceJson = false): JsonResponse
+    public static function success($data = null, string $message = 'success', bool $forceJson = false, ?int $cacheInSeconds = null): JsonResponse
     {
+        $headers = [];
+        if($cacheInSeconds){
+            $headers = [
+                'Cache-Control' => "public, max-age=$cacheInSeconds",
+                'ETag'          => md5(json_encode($data))
+            ];
+        }
         return static::standardize(
             data: $data,
             status: Response::HTTP_OK,
             message: $message,
-            forceJson: $forceJson
+            forceJson: $forceJson,
+            headers: $headers,
         );
     }
 
     /**
      * Return a generic error response.
+     * 
+     * @param string|null $error An error message.
+     * @param int $status The HTTP status code.
+     * @param int $errorCode An application-specific error code.
      */
     public static function error(
         ?string $error,
@@ -77,6 +96,8 @@ trait FormattedApiResponses
 
     /**
      * Return an unauthenticated response.
+     * 
+     * @param string|null $error An error message.
      */
     public static function unauthenticated(?string $error = 'Unauthenticated.'): JsonResponse
     {
@@ -85,6 +106,8 @@ trait FormattedApiResponses
 
     /**
      * Return an unauthorized response.
+     * 
+     * @param string|null $error An error message.
      */
     public static function unauthorized(?string $error = 'This action is unauthorized.'): JsonResponse
     {
@@ -93,6 +116,8 @@ trait FormattedApiResponses
 
     /**
      * Return a not found response.
+     * 
+     * @param string|null $error An error message.
      */
     public static function notFound(?string $error = 'Resource not found.'): JsonResponse
     {
@@ -100,7 +125,9 @@ trait FormattedApiResponses
     }
 
     /**
-     * Return a validation failure response.
+     * Return a validation error response.
+     * 
+     * @param mixed $validation Validation error details.
      */
     public static function validation($validation): JsonResponse
     {
