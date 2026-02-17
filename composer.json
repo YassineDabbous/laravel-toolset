@@ -1,5 +1,5 @@
 {
-    "version": "0.0.1",
+    "version": "1.0.0",
     "name": "yassine-dabbous/toolset",
     "description": "helpers to build a robust app",
     "type": "library",
@@ -12,6 +12,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
+        "php": ">=7.4"
     },
     "autoload": {
         "psr-4": {
