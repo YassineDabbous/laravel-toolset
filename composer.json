@@ -1,6 +1,6 @@
 {
     "version": "1.0.0",
-    "name": "yassine-dabbous/toolset",
+    "name": "yassinedabbous/laravel-toolset",
     "description": "helpers to build a robust app",
     "type": "library",
     "authors": [
