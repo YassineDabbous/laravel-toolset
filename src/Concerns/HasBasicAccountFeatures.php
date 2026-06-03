@@ -12,7 +12,6 @@ use Yaseen\Toolset\Concerns\HasConfigColumn;
 use Yaseen\Toolset\Concerns\Tenantable;
 use Yaseen\Toolset\Types\AccountStatus;
 use Yaseen\Toolset\Types\AccountType;
-use Yaseen\Toolset\Casts\Spatial\Spatialable;
 
 trait HasBasicAccountFeatures
 {
@@ -20,7 +19,6 @@ trait HasBasicAccountFeatures
     use Tenantable;
     use HasFactory;
     use SoftDeletes;
-    use Spatialable;
     use HasMetaColumn, HasConfigColumn;
 
     // when adding ['category_name', 'city_name' ...] don't forget to add eager relation in $with propriety
