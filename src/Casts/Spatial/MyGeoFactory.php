@@ -8,7 +8,6 @@ use GeoIO\Factory;
 
 class MyGeoFactory implements Factory
 {
-    // public static $singletonParser = null;
     public static function parser() : \GeoIO\WKB\Parser\Parser
     {
         $factory = new MyGeoFactory();

@@ -18,13 +18,8 @@ class LocationCast implements CastsAttributes, SerializesCastableAttributes
             return new Point(lat: 0, lng: 0);
         }
         if(bin2hex($value) == 'e6100000010100000000000000000000000000000000000000'){
-            //dump('the default value');
             return new Point(lat: 0, lng: 0);
         }
-        // dump(unpack( "a*", $value ));
-        // dump('-------------------');
-        // dump(bin2hex($value));
-        // dump('-------------------');
 
         // 4 bytes for srid
         $srid = substr($value, 0, 4);
@@ -34,28 +29,6 @@ class LocationCast implements CastsAttributes, SerializesCastableAttributes
         $wkb = substr($value, 4);
 
         return MyGeoFactory::parser()->parse($wkb);
-        // return app('wkb')->parse($wkb); // POINT(2.0 4.0)
-
-
-
-
-        // $coordinates = explode(',', $value);
-
-        // if (count($coordinates) > 1) {
-        //     $clean = str_replace(['POINT(', ')', ' '], ['', '', ','], $coordinates[0]); // POINT(0 0) => 0,0
-        //     $location = explode(',', $clean);
-        //     return new Point(lat: (float) $location[1], lng: (float) $location[0], srid: (int) $coordinates[1]);
-        // }
-
-        // $clean = str_replace(['POINT(', ')', ' '], ['', '', ','], $value); // POINT(0 0) => 0,0
-        // $location = explode(',', $clean);
-        // //dump($location);
-        // if(count($location) >= 2){
-        //     return new Point(lat: (float) $location[1], lng: (float) $location[0]);
-        // }
-        // // it's raw binary data!
-        // // return (new WKB)->read($location[0]);
-        // return null;
     }
 
     public function set($model, string $key, $value, array $attributes): Expression
