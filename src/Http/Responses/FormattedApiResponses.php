@@ -2,7 +2,11 @@
 
 namespace Yaseen\Toolset\Http\Responses;
 
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -58,21 +62,47 @@ trait FormattedApiResponses
      * Return a successful response.
      * @param mixed|null $data The main data payload.
      * @param string $message A descriptive message.
+     * @param int $status The HTTP status code.
      * @param bool $forceJson Force an empty array to be returned as {} instead of [].
      * @param int|null $cacheInSeconds Number of seconds to cache the response.
      */
-    public static function success($data = null, string $message = 'success', bool $forceJson = false, ?int $cacheInSeconds = null): JsonResponse
+    public static function success(
+        $data = null,
+        string $message = 'success',
+        int $status = Response::HTTP_OK,
+        bool $forceJson = false,
+        ?int $cacheInSeconds = null,
+    ): JsonResponse
     {
+        if ($data instanceof ResourceCollection
+            && $data->resource instanceof Paginator) {
+            $p = $data->resource;
+            $items = $data->resolve(request());
+            $data = [
+                'data' => $items,
+                'current_page' => $p->currentPage(),
+                'per_page' => $p->perPage(),
+                'has_more' => $p->hasMorePages(),
+            ];
+            if ($p instanceof LengthAwarePaginator) {
+                $data['total'] = $p->total();
+                $data['last_page'] = $p->lastPage();
+            }
+        } elseif ($data instanceof JsonResource) {
+            $data = $data->resolve(request());
+        }
+
         $headers = [];
-        if($cacheInSeconds){
+        if ($cacheInSeconds) {
             $headers = [
                 'Cache-Control' => "public, max-age=$cacheInSeconds",
-                'ETag'          => md5(json_encode($data))
+                'ETag'          => md5(json_encode($data)),
             ];
         }
+
         return static::standardize(
             data: $data,
-            status: Response::HTTP_OK,
+            status: $status,
             message: $message,
             forceJson: $forceJson,
             headers: $headers,
