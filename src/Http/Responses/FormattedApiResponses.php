@@ -80,13 +80,13 @@ trait FormattedApiResponses
             $items = $data->resolve(request());
             $data = [
                 'data' => $items,
-                'current_page' => $p->currentPage(),
-                'per_page' => $p->perPage(),
-                'has_more' => $p->hasMorePages(),
+                'current_page' => (int) $p->currentPage(),
+                'per_page' => (int) $p->perPage() ,
+                'has_more' => (int) $p->hasMorePages(),
             ];
             if ($p instanceof LengthAwarePaginator) {
-                $data['total'] = $p->total();
-                $data['last_page'] = $p->lastPage();
+                $data['total'] = (int) $p->total();
+                $data['last_page'] = (int) $p->lastPage();
             }
         } elseif ($data instanceof JsonResource) {
             $data = $data->resolve(request());
