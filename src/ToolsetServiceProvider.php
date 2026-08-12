@@ -41,7 +41,7 @@ class ToolsetServiceProvider extends ServiceProvider
         // Model::shouldBeStrict(); // shouldBeStrict(! app()->isProduction());
         // Http::preventStrayRequests(); // Don’t let any requests go out. Good for testing
 
-        $this->logQueries();
+        // $this->logQueries();
         
         // if ($this->app->runningInConsole()) {
         //     $this->offerPublishing();
